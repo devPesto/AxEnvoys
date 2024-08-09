@@ -1,10 +1,12 @@
 package com.artillexstudios.axenvoy.commands;
 
 import com.artillexstudios.axenvoy.AxEnvoyPlugin;
+import com.artillexstudios.axenvoy.config.impl.Messages;
 import com.artillexstudios.axenvoy.envoy.Envoy;
 import com.artillexstudios.axenvoy.envoy.Envoys;
 import com.artillexstudios.axenvoy.envoy.SpawnedCrate;
 import com.artillexstudios.axenvoy.user.User;
+import com.artillexstudios.axenvoy.utils.TrackerUtil;
 import com.artillexstudios.axenvoy.utils.Utils;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
@@ -167,5 +169,39 @@ public class EnvoyCommand {
     public void time(CommandSender sender) {
         Pair<Envoy, Long> pair = Utils.getNextEnvoy();
         Utils.sendMessage(sender, pair.getFirst().getConfig().PREFIX, pair.getFirst().getConfig().START_TIME.replace("%time%", Utils.fancyTime(pair.getSecond(), pair.getFirst())).replace("%envoy%", pair.getFirst().getName()));
+    }
+
+
+    @Subcommand("track")
+    @CommandPermission("axenvoy.command.link")
+    public void track(Player sender) {
+        Messages messages = AxEnvoyPlugin.getMessages();
+
+        if (!TrackerUtil.hasActiveCrates()) {
+            Utils.sendMessage(sender, messages.PREFIX, messages.TRACKER_NO_ENVOY);
+            return;
+        }
+
+        if (TrackerUtil.isPlayerTrackingCrate(sender)) {
+            Utils.sendMessage(sender, messages.PREFIX, messages.TRACKER_ALREADY_TRACKING);
+            return;
+        }
+
+        TrackerUtil.trackNearestCrate(sender);
+        Utils.sendMessage(sender, messages.PREFIX, messages.TRACKER_ENABLED);
+    }
+
+    @Subcommand("untrack")
+    @CommandPermission("axenvoy.command.untrack")
+    public void untrack(Player sender) {
+        Messages messages = AxEnvoyPlugin.getMessages();
+
+        if (!TrackerUtil.isPlayerTrackingCrate(sender)) {
+            Utils.sendMessage(sender, messages.PREFIX, messages.TRACKER_ALREADY_UNTRACKED);
+            return;
+        }
+
+        TrackerUtil.untrackCrates(sender);
+        Utils.sendMessage(sender, messages.PREFIX, messages.TRACKER_UNTRACKED);
     }
 }

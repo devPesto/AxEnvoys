@@ -21,6 +21,18 @@ public class Config extends AbstractConfig {
     })
     public static boolean DONT_REPLACE_BLOCKS = true;
 
+    @Key("tracker.enabled")
+    @Comment({"Allows players to track the nearest spawned crate using a compass"})
+    public static boolean TRACKER_ENABLED = true;
+
+    @Key("tracker.track-on-join")
+    @Comment({"Start tracking when players join, otherwise players can use /envoy link"})
+    public static boolean TRACK_ON_JOIN = true;
+
+    @Key("tracker.notification-cooldown")
+    @Comment({"How long is the delay between distance settings (in seconds)"})
+    public static int NOTIFICATION_COOLDOWN = 3;
+
     private static final Config CONFIG = new Config();
 
     public static void reload() {

@@ -39,3 +39,10 @@ messages:
     hour: "h"
     minute: "m"
     second: "s"
+  tracker:
+    linked: "Your compass is now tracking the nearest supply crate"
+    unlinked: "Your compass is now longer tracking any supply crates"
+    already-linked: "You are already tracking the nearest supply crate"
+    already-unlinked: "You are already not tracking any supply crates"
+    no-envoys: "There are no active supply crates to track at this time"
+    nearest-crate: "The nearest crate is %distance% blocks away"

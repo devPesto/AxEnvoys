@@ -18,10 +18,12 @@ import com.artillexstudios.axenvoy.listeners.CollectionListener;
 import com.artillexstudios.axenvoy.listeners.FireworkDamageListener;
 import com.artillexstudios.axenvoy.listeners.FlareListener;
 import com.artillexstudios.axenvoy.listeners.WorldLoadListener;
+import com.artillexstudios.axenvoy.listeners.TrackerListener;
 import com.artillexstudios.axenvoy.placeholders.Placeholders;
 import com.artillexstudios.axenvoy.user.User;
 import com.artillexstudios.axenvoy.utils.EditorListener;
 import com.artillexstudios.axenvoy.utils.FallingBlockChecker;
+import com.artillexstudios.axenvoy.utils.TrackerUtil;
 import com.artillexstudios.axenvoy.utils.Utils;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -109,6 +111,10 @@ public final class AxEnvoyPlugin extends AxPlugin {
             Bukkit.getPluginManager().registerEvents(new BlockPhysicsListener(), this);
         }
 
+        if (Config.TRACKER_ENABLED) {
+            Bukkit.getPluginManager().registerEvents(new TrackerListener(), this);
+        }
+
         Bukkit.getPluginManager().registerEvents(new CollectionListener(), this);
         Bukkit.getPluginManager().registerEvents(new FireworkDamageListener(), this);
         Bukkit.getPluginManager().registerEvents(new EditorListener(), this);
@@ -178,6 +184,7 @@ public final class AxEnvoyPlugin extends AxPlugin {
         MESSAGES.reload();
         Crates.reload();
         Envoys.reload();
+        TrackerUtil.reload();
     }
 
     @Override

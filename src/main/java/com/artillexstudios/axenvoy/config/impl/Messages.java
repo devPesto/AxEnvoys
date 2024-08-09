@@ -107,6 +107,24 @@ public class Messages extends AbstractConfig {
     @Key("messages.time.second")
     public String SECOND = "s";
 
+    @Key("messages.tracker.linked")
+    public String TRACKER_ENABLED = "Your compass is now tracking the nearest envoy";
+
+    @Key("messages.tracker.unlinked")
+    public String TRACKER_UNTRACKED = "Your compass is now longer tracking envoys";
+
+    @Key("messages.tracker.unlinked")
+    public String TRACKER_ALREADY_TRACKING = "You are already tracking the nearest envoy";
+
+    @Key("messages.tracker.unlinked")
+    public String TRACKER_ALREADY_UNTRACKED = "You are already not tracking any envoys";
+
+    @Key("messages.tracker.no-envoys")
+    public String TRACKER_NO_ENVOY = "There are no active envoys to track at this time";
+
+    @Key("messages.tracker.nearest-crate")
+    public String TRACKER_NEAREST_CRATE  = "The nearest crate is %distance% blocks away";
+
     protected final String fileName;
 
     public Messages(String fileName) {

@@ -8,3 +8,13 @@ listen-to-block-physics: false
 # Enable this, if you want to prevent some blocks that
 # replaced by crates in certain cases.
 dont-replace-blocks: true
+
+# Allows players to track the nearest spawned crate using a compass
+tracker:
+    enabled: true
+
+    # Start tracking when players join, otherwise players can use /envoy link
+    track-on-join: true
+
+    # How long is the delay between distance settings (in seconds)
+    notification-cooldown: 5
