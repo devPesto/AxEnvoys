@@ -29,7 +29,7 @@ public class EnvoyCommand {
 
     @Subcommand("flare")
     @CommandPermission("axenvoy.command.flare")
-    public void flare(CommandSender sender, Envoy envoy, @Default("me") Player receiver, @Default("1") int amount) {
+    public void flare(CommandSender sender, @Default("default") Envoy envoy, @Default("me") Player receiver, @Default("1") int amount) {
         if (envoy == null) {
             Utils.sendMessage(sender, AxEnvoyPlugin.getMessages().PREFIX, AxEnvoyPlugin.getMessages().NO_ENVOY_FOUND);
             return;
@@ -41,7 +41,7 @@ public class EnvoyCommand {
 
     @Subcommand("start")
     @CommandPermission("axenvoy.command.start")
-    public void start(CommandSender sender, Envoy envoy) {
+    public void start(CommandSender sender, @Default("default") Envoy envoy) {
         if (envoy == null) {
             Utils.sendMessage(sender, AxEnvoyPlugin.getMessages().PREFIX, AxEnvoyPlugin.getMessages().NO_ENVOY_FOUND);
             return;
@@ -52,7 +52,7 @@ public class EnvoyCommand {
 
     @Subcommand("stop")
     @CommandPermission("axenvoy.command.stop")
-    public void stop(CommandSender sender, Envoy envoy) {
+    public void stop(CommandSender sender, @Default("default") Envoy envoy) {
         if (envoy == null) {
             Utils.sendMessage(sender, AxEnvoyPlugin.getMessages().PREFIX, AxEnvoyPlugin.getMessages().NO_ENVOY_FOUND);
             return;
@@ -79,7 +79,7 @@ public class EnvoyCommand {
 
     @Subcommand("center")
     @CommandPermission("axenvoy.command.center")
-    public void center(Player sender, Envoy envoy) {
+    public void center(Player sender, @Default("default") Envoy envoy) {
         if (envoy == null) {
             Utils.sendMessage(sender, AxEnvoyPlugin.getMessages().PREFIX, AxEnvoyPlugin.getMessages().NO_ENVOY_FOUND);
             return;
@@ -131,7 +131,7 @@ public class EnvoyCommand {
 
     @Subcommand("coords")
     @CommandPermission("axenvoy.command.coords")
-    public void coords(CommandSender sender, Envoy envoy) {
+    public void coords(CommandSender sender, @Default("default") Envoy envoy) {
         if (envoy == null) {
             Utils.sendMessage(sender, AxEnvoyPlugin.getMessages().PREFIX, AxEnvoyPlugin.getMessages().NO_ENVOY_FOUND);
             return;
