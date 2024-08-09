@@ -55,16 +55,16 @@ public class TrackerListener implements Listener {
 
     @EventHandler
     public void onEnvoyStart(EnvoyStartEvent event) {
-        TrackerUtil.cache(event.getEnvoy());
+        TrackerUtil.refreshActiveCrates();
     }
 
     @EventHandler
     public void onEnvoyEnd(EnvoyEndEvent event) {
-        TrackerUtil.expire(event.getEnvoy());
+        TrackerUtil.refreshActiveCrates();
     }
 
     @EventHandler
     public void onEnvoyCollect(EnvoyCrateCollectEvent event) {
-        TrackerUtil.expire(event.getCrate());
+        TrackerUtil.refreshActiveCrates();
     }
 }
