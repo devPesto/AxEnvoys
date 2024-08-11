@@ -2,6 +2,7 @@ package com.artillexstudios.axenvoy.utils;
 
 import com.artillexstudios.axenvoy.AxEnvoyPlugin;
 import com.artillexstudios.axenvoy.config.impl.Messages;
+import com.artillexstudios.axenvoy.envoy.Envoy;
 import com.artillexstudios.axenvoy.envoy.Envoys;
 import com.artillexstudios.axenvoy.envoy.SpawnedCrate;
 import org.bukkit.Location;
@@ -27,6 +28,7 @@ public class TrackerUtil {
         cratesCache.addAll(Envoys.getTypes()
                 .values()
                 .stream()
+                .filter(Envoy::isActive)
                 .flatMap(crate -> crate.getSpawnedCrates()
                         .stream()
                         .map(SpawnedCrate::getFinishLocation))

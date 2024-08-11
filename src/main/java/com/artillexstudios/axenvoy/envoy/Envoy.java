@@ -432,9 +432,9 @@ public class Envoy {
             next.claim(null, this, false);
         }
 
-        Bukkit.getPluginManager().callEvent(new EnvoyEndEvent(this));
         this.active = false;
         this.updateNext();
+        Bukkit.getPluginManager().callEvent(new EnvoyEndEvent(this));
     }
 
     public ItemStack getFlare(int amount) {
